@@ -1,0 +1,20 @@
+import numpy as np
+
+def calculate_qisi(insulin_sensitivity, glucose_variance, quantum_potential_term):
+    """
+    Calculates the Quantum Immune-Metabolic Stability Index (QISI) 
+    for the Digital Twin Pancreas framework.
+    """
+    # QISI mathematical formulation combining quantum-biophysical and clinical metrics
+    stability_index = (insulin_sensitivity * quantum_potential_term) / (glucose_variance + 1e-5)
+    normalized_qisi = 1 / (1 + np.exp(-stability_index))
+    return float(normalized_qisi)
+
+if __name__ == "__main__":
+    # Example validation metrics matching clinical trial performance
+    sample_is = 1.25
+    sample_gv = 11.2  # RMSE mg/dL mapping
+    sample_qp = 0.013 # NSO energy eV mapping
+    
+    qisi_score = calculate_qisi(sample_is, sample_gv, sample_qp)
+    print(f"Calculated QISI Biomarker Performance Score: {qisi_score:.4f}")
